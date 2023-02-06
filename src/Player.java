@@ -17,8 +17,8 @@ public class Player {
      * @param gameBoard GameBoard the main gameboard
      * @return Dictionary validated coordinates of the desired move
      */
-    public Dictionary takeTurn(GameBoard gameBoard){
-        Dictionary turn = new Hashtable();
+    public Dictionary<String, Integer> takeTurn(GameBoard gameBoard){
+        Dictionary<String, Integer> turn = new Hashtable<>();
 
         int row = promptInput(String.format("%1$s turn. Enter the row of your move",name));
         turn.put("row", row-1);
@@ -48,6 +48,7 @@ public class Player {
             finalInput = sc.nextInt();
             validInput = validateInput(finalInput);
         }
+        sc.close();
         return finalInput;
     }
 
