@@ -16,10 +16,10 @@ public class TicTacGame {
         gameBoard.printBoard();
         while (!winstate) {
             Dictionary<String, Integer> player1Turn = player1.takeTurn(gameBoard);
-            winstate = gameBoard.SetValue((Integer) player1Turn.get("row"), (Integer) player1Turn.get("column"), player1);
+            winstate = gameBoard.setValue((Integer) player1Turn.get("row"), (Integer) player1Turn.get("column"), player1);
             if(winstate){break;}
             Dictionary<String, Integer> player2Turn = player2.takeTurn(gameBoard);
-            winstate = gameBoard.SetValue((Integer) player2Turn.get("row"), (Integer) player2Turn.get("column"), player2);
+            winstate = gameBoard.setValue((Integer) player2Turn.get("row"), (Integer) player2Turn.get("column"), player2);
         }
         gameLoop();
     }
