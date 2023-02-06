@@ -7,7 +7,8 @@ import javax.swing.JButton;
 import javax.swing.JPanel;
 import java.awt.Font;
 
-public class GameBoard extends JFrame{
+
+public class GameBoard {
     int[][] a = new int[3][3];
     private JButton[][] buttons = new JButton[3][3];
     
@@ -33,6 +34,7 @@ public class GameBoard extends JFrame{
         }
     }
 
+
     /**
      * Prints out the gameboard
      */
@@ -49,10 +51,8 @@ public class GameBoard extends JFrame{
               default:
                 buttons[i][j].setText("");
                 break;
-            }
-          }
         }
-      }
+    }
 
     /**
      * Gets passed a coordinate set and the player setting the coordinate, and updates the gameboard
@@ -61,11 +61,11 @@ public class GameBoard extends JFrame{
      * @param player player object
      * @return bool true if someone wins
      */
-    public boolean setValue(int row, int column, Player player) {
+    public boolean SetValue(int column, int row, Player player){
         a[row][column] = player.character;
-        printBoard();
+        this.printBoard();
         return getWinState(player.character, player.name);
-      }
+    }
 
     /**
      * Checks the board to see if the player won
@@ -127,3 +127,4 @@ public class GameBoard extends JFrame{
     }
 
 }
+
