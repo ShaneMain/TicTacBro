@@ -25,7 +25,7 @@ public class Player {
 
         int column = promptInput(String.format("%1$s turn. Enter the column of your move",name));
         turn.put("column", column-1);
-        if(gameBoard.a[column-1][row-1] != 0) {
+        if(gameBoard.a[row-1][column-1] != 0) {
             System.out.println("Invalid input. Try again.");
             return takeTurn(gameBoard);
         }
@@ -43,7 +43,7 @@ public class Player {
         int finalInput = 0;
         boolean validInput = false;
 
-        while(validInput == false){
+        while(validInput == false) {
             System.out.println(text);
             finalInput = sc.nextInt();
             validInput = validateInput(finalInput);

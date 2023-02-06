@@ -1,22 +1,55 @@
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.awt.GridLayout;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
 
-public class GameBoard {
+public class GameBoard extends JFrame{
     int[][] a = new int[3][3];
+    private JLabel[][] labels = new JLabel[3][3];
+    
+
+    public GameBoard(){
+        super("Tic-Tac-Toe");
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setSize(400, 400);
+        setLocationRelativeTo(null);
+        setVisible(true);
+
+        JPanel panel = new JPanel();
+        panel.setLayout(new GridLayout(3, 3));
+        add(panel);
+
+        for (int i = 0; i < 3; i++) {
+            for (int j = 0; j < 3; j++) {
+                labels[i][j] = new JLabel();
+                panel.add(labels[i][j]);
+            }
+        }
+    }
 
     /**
      * Prints out the gameboard
      */
     public void printBoard() {
-        for (int[] ints : a) {
-            List<Integer> currentRow = new ArrayList<>();
-            for (int anInt : ints) {
-                currentRow.add(anInt);
+        for (int i = 0; i < 3; i++) {
+          for (int j = 0; j < 3; j++) {
+            switch (a[i][j]) {
+              case 1:
+                labels[i][j].setText("X");
+                break;
+              case 2:
+                labels[i][j].setText("O");
+                break;
+              default:
+                labels[i][j].setText("");
+                break;
             }
-            System.out.println(currentRow);
+          }
         }
-    }
+      }
 
     /**
      * Gets passed a coordinate set and the player setting the coordinate, and updates the gameboard
@@ -25,11 +58,11 @@ public class GameBoard {
      * @param player player object
      * @return bool true if someone wins
      */
-    public boolean SetValue(int column, int row, Player player){
+    public boolean setValue(int row, int column, Player player) {
         a[row][column] = player.character;
-        this.printBoard();
+        printBoard();
         return getWinState(player.character, player.name);
-    }
+      }
 
     /**
      * Checks the board to see if the player won
@@ -91,4 +124,3 @@ public class GameBoard {
     }
 
 }
-
