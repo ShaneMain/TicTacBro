@@ -8,7 +8,7 @@ import javax.swing.JPanel;
 import java.awt.Font;
 
 
-public class GameBoard {
+public class GameBoard extends JFrame {
     int[][] a = new int[3][3];
     private JButton[][] buttons = new JButton[3][3];
     
@@ -51,6 +51,8 @@ public class GameBoard {
               default:
                 buttons[i][j].setText("");
                 break;
+                }
+            }
         }
     }
 
