@@ -3,12 +3,13 @@ import java.util.Arrays;
 import java.util.List;
 import java.awt.GridLayout;
 import javax.swing.JFrame;
-import javax.swing.JLabel;
+import javax.swing.JButton;
 import javax.swing.JPanel;
+import java.awt.Font;
 
 public class GameBoard extends JFrame{
     int[][] a = new int[3][3];
-    private JLabel[][] labels = new JLabel[3][3];
+    private JButton[][] buttons = new JButton[3][3];
     
 
     public GameBoard(){
@@ -21,11 +22,13 @@ public class GameBoard extends JFrame{
         JPanel panel = new JPanel();
         panel.setLayout(new GridLayout(3, 3));
         add(panel);
+        Font font = new Font("Arial", Font.BOLD, 50);
 
         for (int i = 0; i < 3; i++) {
             for (int j = 0; j < 3; j++) {
-                labels[i][j] = new JLabel();
-                panel.add(labels[i][j]);
+                buttons[i][j] = new JButton();
+                buttons[i][j].setFont(font);
+                panel.add(buttons[i][j]);
             }
         }
     }
@@ -38,13 +41,13 @@ public class GameBoard extends JFrame{
           for (int j = 0; j < 3; j++) {
             switch (a[i][j]) {
               case 1:
-                labels[i][j].setText("X");
+                buttons[i][j].setText("X");
                 break;
               case 2:
-                labels[i][j].setText("O");
+                buttons[i][j].setText("O");
                 break;
               default:
-                labels[i][j].setText("");
+                buttons[i][j].setText("");
                 break;
             }
           }

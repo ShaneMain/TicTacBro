@@ -48,7 +48,6 @@ public class Player {
             finalInput = sc.nextInt();
             validInput = validateInput(finalInput);
         }
-        sc.close();
         return finalInput;
     }
 
