@@ -1,20 +1,56 @@
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.awt.GridLayout;
+import javax.swing.JFrame;
+import javax.swing.JButton;
+import javax.swing.JPanel;
+import java.awt.Font;
+
 
 public class GameBoard {
     int[][] a = new int[3][3];
+    private JButton[][] buttons = new JButton[3][3];
+    
+
+    public GameBoard(){
+        super("Tic-Tac-Toe");
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setSize(400, 400);
+        setLocationRelativeTo(null);
+        setVisible(true);
+
+        JPanel panel = new JPanel();
+        panel.setLayout(new GridLayout(3, 3));
+        add(panel);
+        Font font = new Font("Arial", Font.BOLD, 50);
+
+        for (int i = 0; i < 3; i++) {
+            for (int j = 0; j < 3; j++) {
+                buttons[i][j] = new JButton();
+                buttons[i][j].setFont(font);
+                panel.add(buttons[i][j]);
+            }
+        }
+    }
+
 
     /**
      * Prints out the gameboard
      */
     public void printBoard() {
-        for (int[] ints : a) {
-            List<Integer> currentRow = new ArrayList<>();
-            for (int anInt : ints) {
-                currentRow.add(anInt);
-            }
-            System.out.println(currentRow);
+        for (int i = 0; i < 3; i++) {
+          for (int j = 0; j < 3; j++) {
+            switch (a[i][j]) {
+              case 1:
+                buttons[i][j].setText("X");
+                break;
+              case 2:
+                buttons[i][j].setText("O");
+                break;
+              default:
+                buttons[i][j].setText("");
+                break;
         }
     }
 
